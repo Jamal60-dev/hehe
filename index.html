@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flowers for You</title>
+  <style>
+    body {
+      margin: 0;
+      background: #fff0f5;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    h1 {
+      position: absolute;
+      top: 30px;
+      text-align: center;
+      color: #b22222;
+      font-size: 2.5em;
+    }
+
+    .flower {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-size: cover;
+      animation: bloom 3s ease-out forwards;
+    }
+
+    @keyframes bloom {
+      0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Blooming Just for You, Love</h1>
+
+  <script>
+    const flowerImages = [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Red_rose_2.jpg/640px-Red_rose_2.jpg",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Lilium_bulbiferum_detail.jpg/640px-Lilium_bulbiferum_detail.jpg"
+    ];
+
+    function createFlower() {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.style.left = `${Math.random() * window.innerWidth}px`;
+      flower.style.top = `${Math.random() * window.innerHeight}px`;
+      flower.style.backgroundImage = `url(${flowerImages[Math.floor(Math.random() * flowerImages.length)]})`;
+
+      document.body.appendChild(flower);
+
+      setTimeout(() => {
+        flower.remove();
+      }, 6000);
+    }
+
+    // Bloom flowers repeatedly
+    setInterval(createFlower, 500);
+  </script>
+</body>
+</html>
